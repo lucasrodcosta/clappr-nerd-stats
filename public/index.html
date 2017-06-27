@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clappr Nerd Stats</title>
+  </head>
+  <body>
+    <div id="player"></div>
+    <script type="text/javascript" charset="utf-8">
+      window.onload = function() {
+        Clappr.Log.setLevel(Clappr.Log.LEVEL_INFO);
+
+        window.player = new Clappr.Player({
+          parentId: '#player',
+          plugins: [ClapprNerdStats, ClapprStats, LevelSelector],
+          // source: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+          source: 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8',
+          height: 607.5,
+          width: 1080
+        })
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/clappr-stats.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/latest/clappr-nerd-stats.js"></script>
+  </body>
+</html>

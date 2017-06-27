@@ -1,0 +1,133 @@
+<%= counters = metrics.counters %>
+<%= timers = metrics.timers %>
+<%= extra = metrics.extra %>
+
+<div class="clappr-nerd-stats container">
+  <ul>
+    <li class="title"><span>Counters</span></li>
+    <li>
+      Plays:
+      <div><span><%= counters.play %></span></div>
+    </li>
+    <li>
+      Pauses:
+      <div><span><%= counters.pause %></span></div>
+    </li>
+    <li>
+      Errors:
+      <div><span><%= counters.error %></span></div>
+    </li>
+    <li>
+      Bufferings:
+      <div><span><%= counters.buffering %></span></div>
+    </li>
+    <li>
+      Decoded frames:
+      <div><span><%= counters.decodedFrames %></span></div>
+    </li>
+    <li>
+      Dropped frames:
+      <div><span><%= counters.droppedFrames %></span></div>
+    </li>
+    <li>
+      Frames per second:
+      <div><span><%= counters.fps %></span></div>
+    </li>
+    <li>
+      Bitrate changes:
+      <div><span><%= counters.changeLevel %></span></div>
+    </li>
+    <li>
+      Seeks:
+      <div><span><%= counters.seek %></span></div>
+    </li>
+    <li>
+      Fullscreen:
+      <div><span><%= counters.fullscreen %></span></div>
+    </li>
+    <li>
+      DVR seeks:
+      <div><span><%= counters.dvrUsage %></span></div>
+    </li>
+  </ul>
+
+  <ul>
+    <li class="title"><span>Timers</span></li>
+    <li>
+      Startup time:
+      <div><span><%= timers.startup.toFixed(2) %> ms</span></div>
+    </li>
+    <li>
+      Watching time:
+      <div><span><%= (timers.watch / 1000).toFixed(2) %> sec</span></div>
+    </li>
+    <li>
+      Pause time:
+      <div><span><%= timers.pause.toFixed(2) %> ms</span></div>
+    </li>
+    <li>
+      Buffering time:
+      <div><span><%= timers.buffering.toFixed(2) %> ms</span></div>
+    </li>
+    <li>
+      Session time:
+      <div><span><%= (timers.session / 1000).toFixed(2) %> sec</span></div>
+    </li>
+    <li>
+      Latency:
+      <div><span><%= timers.latency.toFixed(2) %> ms</span></div>
+    </li>
+  </ul>
+
+  <ul>
+    <li class="title"><span>Extra</span></li>
+    <li>
+      Playback:
+      <div><span><%= extra.playbackName %></span></div>
+    </li>
+    <li>
+      Playback type:
+      <div><span><%= extra.playbackType %></span></div>
+    </li>
+    <li>
+      Buffer size:
+      <div><span><%= (extra.buffersize / 1000).toFixed(2) %> sec</span></div>
+    </li>
+    <li>
+      Video duration:
+      <div><span><%= (extra.duration / 1000).toFixed(2) %> sec</span></div>
+    </li>
+    <li>
+      Current time:
+      <div><span><%= (extra.currentTime / 1000).toFixed(2) %> sec</span></div>
+    </li>
+    <!-- <li>
+      Bitrates history:
+      <div><span>[<%= extra.bitratesHistory.map((x) => {return x.bitrate}).join(', ') %>]</span></div>
+    </li> -->
+    <li>
+      Bitrate weighted mean:
+      <div><span><%= extra.bitrateWeightedMean.toFixed(2) %> kbps</span></div>
+    </li>
+    <li>
+      Bitrate most used:
+      <div><span><%= extra.bitrateMostUsed.bitrate %> kbps</span></div>
+    </li>
+    <!-- <li>
+      Watch history:
+      <div><span>[<%= extra.watchHistory.map((x) => {return parseFloat(x).toFixed(2)}).join(', ') %>]</</span>
+    </li> -->
+    <li>
+      % Watched:
+      <div><span><%= extra.watchedPercentage.toFixed(2) %> %</span></div>
+    </li>
+    <li>
+      % Buffering:
+      <div><span><%= extra.bufferingPercentage.toFixed(2) %> %</span></div>
+    </li>
+    <li>
+      Bandwidth:
+      <div><span><%= extra.bandwidth %> kbps</span></div>
+    </li>
+  </ul>
+</div>
