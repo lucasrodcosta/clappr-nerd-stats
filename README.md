@@ -16,7 +16,7 @@ a NPM package.
 ```html
 <head>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.stats/latest/clappr-stats.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-stats/dist/clappr-stats.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-nerd-stats/dist/clappr-nerd-stats.min.js"></script>
 </head>
 
