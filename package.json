@@ -2,7 +2,7 @@
   "name": "clappr-nerd-stats",
   "version": "0.0.1",
   "description": "Clappr UI plugin to show clappr-stats info",
-  "main": "src/clappr-nerd-stats.js",
+  "main": "./dist/clappr-nerd-stats.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:lucasrodcosta/clappr-nerd-stats.git"
@@ -16,7 +16,8 @@
   "author": "lucasrodcosta@gmail.com",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "clappr": "^0.2.66"
+    "clappr": "^0.2.66",
+    "mousetrap": "^1.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

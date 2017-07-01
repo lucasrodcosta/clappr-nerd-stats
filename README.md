@@ -10,18 +10,32 @@ A [Clappr](https://github.com/clappr/clappr) UI plugin to show statistics provid
 
 ## Usage
 
+You can use it from JSDelivr (`https://cdn.jsdelivr.net/npm/clappr-nerd-stats/dist/clappr-nerd-stats.min.js`) or as
+a NPM package.
+
 ```html
-<script>
-  window.player = new Clappr.Player({
-    parentId: '#player',
-    plugins: [ClapprNerdStats, ClapprStats],
-    // source: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-    source: 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8',
-    height: 607.5,
-    width: 1080
-  })
-</script>
+<head>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.stats/latest/clappr-stats.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-nerd-stats/dist/clappr-nerd-stats.min.js"></script>
+</head>
+
+<body>
+  <div id="player"></div>
+  <script>
+    window.player = new Clappr.Player({
+      parentId: '#player',
+      plugins: [ClapprNerdStats, ClapprStats],
+      // source: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+      source: 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8',
+      height: 607.5,
+      width: 1080
+    })
+  </script>
+</body>
 ```
+
+Now, just press `<ctrl+shift+s>` to show/hide the stats.
 
 Note that this plugin depends on `clappr-stats`. So, you must include both `ClapprNerdStats` and
 `ClapprStats` in plugins list above.
