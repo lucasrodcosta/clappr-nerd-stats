@@ -34,14 +34,19 @@ a NPM package.
         // Optional: provide multiple combination of keyboard shortcuts to show/hide the statistics.
         // For reference, visit: https://github.com/ccampbell/mousetrap.
         // Default: ['command+shift+s', 'ctrl+shift+s']
-        shortcut: ['command+shift+s', 'ctrl+shift+s']
+        shortcut: ['command+shift+s', 'ctrl+shift+s'],
+
+        // Optional: position of the icon to show/hide the statistics.
+        // Values: 'top-right', 'top-left', 'bottom-right', 'bottom-left', 'none'
+        // Default: 'top-right'
+        iconPosition: 'top-right'
       }
     })
   </script>
 </body>
 ```
 
-Now, just press `<ctrl+shift+s>` to show/hide the stats.
+Now, just press `<ctrl+shift+s>` or click in the info icon to show/hide the stats.
 
 Note that this plugin depends on `clappr-stats`. So, you must include both `ClapprNerdStats` and
 `ClapprStats` in plugins list above.

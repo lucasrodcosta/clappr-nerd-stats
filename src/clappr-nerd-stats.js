@@ -8,11 +8,19 @@ var Mousetrap = require('mousetrap')
 
 export default class ClapprNerdStats extends UIContainerPlugin {
   get name() { return 'clappr-nerd-stats' }
+
   get template() { return template(pluginHtml) }
+
+  get events() {
+    return {
+      'click [data-show-stats-button]': 'showOrHide'
+    }
+  }
 
   constructor(container) {
     super(container)
     this._shortcut = get(container, 'options.clapprNerdStats.shortcut', ['command+shift+s', 'ctrl+shift+s'])
+    this._iconPosition = get(container, 'options.clapprNerdStats.iconPosition', 'top-right')
   }
 
   bindEvents() {
@@ -29,25 +37,27 @@ export default class ClapprNerdStats extends UIContainerPlugin {
       this.listenTo(clapprStats, ClapprStats.REPORT_EVENT, this.onReport)
       this.style = Styler.getStyleFor(pluginStyle, {baseUrl: this.options.baseUrl})
       this.metrics = clapprStats._metrics
+      this.render()
     }
   }
 
-  showOrHide() {
+  showOrHide(event) {
     if (this.showing) {
       this.hide()
     } else {
       this.show()
       this.render()
     }
+    event.stopPropagation()
   }
 
   show() {
-    this.$el.show()
+    this.$el.find('.clappr-nerd-stats.container').show()
     this.showing = true
   }
 
   hide() {
-    this.$el.hide()
+    this.$el.find('.clappr-nerd-stats.container').hide()
     this.showing = false
   }
 
@@ -57,12 +67,14 @@ export default class ClapprNerdStats extends UIContainerPlugin {
   }
 
   render() {
-    if (this.showing) {
-      this.$el.html(this.template({
-        metrics: this.metrics
-      }))
-      this.$el.append(this.style)
-      this.container.$el.append(this.el)
+    this.$el.html(this.template({
+      metrics: this.metrics,
+      iconPosition: this._iconPosition
+    }))
+    this.$el.append(this.style)
+    this.container.$el.append(this.el)
+    if (!this.showing) {
+      this.hide()
     }
     return this
   }

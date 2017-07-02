@@ -42,3 +42,35 @@
   margin: 0;
   float: right;
 }
+
+.clappr-nerd-stats.icon-show-stats a {
+  z-index: 1000;
+  position: absolute;
+  float: right;
+  color: white;
+  display: none;
+}
+
+.clappr-nerd-stats.icon-show-stats.top-right a {
+  display: block;
+  top: 5px;
+  right: 10px;
+}
+
+.clappr-nerd-stats.icon-show-stats.top-left a {
+  display: block;
+  top: 5px;
+  left: 10px;
+}
+
+.clappr-nerd-stats.icon-show-stats.bottom-right a {
+  display: block;
+  right: 10px;
+  bottom: 5px;
+}
+
+.clappr-nerd-stats.icon-show-stats.bottom-left a {
+  display: block;
+  bottom: 5px;
+  left: 10px;
+}
