@@ -1,9 +1,9 @@
 .clappr-nerd-stats.container {
   position: absolute;
-  display: flex;
+  display: inline-block;
   top: 2em;
   left: 2em;
-  padding: 10px 5px 10px 5px;
+  padding: 5px 5px 5px 5px;
   margin: 0;
   line-height: 20px;
   font-size: 11px;
@@ -11,12 +11,18 @@
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   z-index: 1000;
+  overflow: auto;
+  max-height: 300px;
+  min-width: 240px;
+  max-width: 75%;
 }
 
 .clappr-nerd-stats.container ul {
-  flex: 1;
-  padding: 0 5px 0 5px;
-  width: 240px;
+  display: inline-block;
+  float: left;
+  padding: 5px 5px 5px 5px;
+  min-width: 240px;
+  width: 33.3333%;
 }
 
 .clappr-nerd-stats.container ul, li {
