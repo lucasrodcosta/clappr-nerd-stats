@@ -2,6 +2,7 @@ import {UIContainerPlugin, Events, Styler, template} from 'clappr'
 import ClapprStats from 'clappr-stats'
 import pluginStyle from './public/clappr-nerd-stats.css'
 import pluginHtml from './public/clappr-nerd-stats.html'
+import get from 'lodash.get'
 
 var Mousetrap = require('mousetrap')
 
@@ -11,6 +12,7 @@ export default class ClapprNerdStats extends UIContainerPlugin {
 
   constructor(container) {
     super(container)
+    this._shortcut = get(container, 'options.clapprNerdStats.shortcut', ['command+shift+s', 'ctrl+shift+s'])
   }
 
   bindEvents() {
@@ -23,7 +25,7 @@ export default class ClapprNerdStats extends UIContainerPlugin {
       console.error('clappr-stats not available. Please, include it as a plugin of your Clappr instance.\n' +
                     'For more info, visit: https://github.com/clappr/clappr-stats.')
     } else {
-      Mousetrap.bind(['command+shift+s', 'ctrl+shift+s'], () => this.showOrHide())
+      Mousetrap.bind(this._shortcut, () => this.showOrHide())
       this.listenTo(clapprStats, ClapprStats.REPORT_EVENT, this.onReport)
       this.style = Styler.getStyleFor(pluginStyle, {baseUrl: this.options.baseUrl})
       this.metrics = clapprStats._metrics

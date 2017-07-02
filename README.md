@@ -29,7 +29,13 @@ a NPM package.
       // source: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
       source: 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8',
       height: 607.5,
-      width: 1080
+      width: 1080,
+      clapprNerdStats: {
+        // Optional: provide multiple combination of keyboard shortcuts to show/hide the statistics.
+        // For reference, visit: https://github.com/ccampbell/mousetrap.
+        // Default: ['command+shift+s', 'ctrl+shift+s']
+        shortcut: ['command+shift+s', 'ctrl+shift+s']
+      }
     })
   </script>
 </body>

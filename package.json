@@ -17,6 +17,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "clappr": "^0.2.66",
+    "lodash.get": "^4.3.0",
     "mousetrap": "^1.6.1"
   },
   "devDependencies": {
