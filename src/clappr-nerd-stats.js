@@ -48,7 +48,10 @@ export default class ClapprNerdStats extends UIContainerPlugin {
       this.show()
       this.render()
     }
-    event.stopPropagation()
+
+    if (event) {
+      event.stopPropagation()
+    }
   }
 
   show() {

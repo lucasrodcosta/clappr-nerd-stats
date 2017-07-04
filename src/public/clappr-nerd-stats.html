@@ -105,22 +105,14 @@
       Current time:
       <div><span><%= (extra.currentTime / 1000).toFixed(2) %> sec</span></div>
     </li>
-    <!-- <li>
-      Bitrates history:
-      <div><span>[<%= extra.bitratesHistory.map((x) => {return x.bitrate}).join(', ') %>]</span></div>
-    </li> -->
     <li>
       Bitrate weighted mean:
-      <div><span><%= extra.bitrateWeightedMean.toFixed(2) %> kbps</span></div>
+      <div><span><%= (extra.bitrateWeightedMean / 1000).toFixed(2) %> kbps</span></div>
     </li>
     <li>
       Bitrate most used:
-      <div><span><%= extra.bitrateMostUsed.bitrate %> kbps</span></div>
+      <div><span><%= extra.bitrateMostUsed ? (extra.bitrateMostUsed.bitrate / 1000).toFixed(2) : '0' %> kbps</span></div>
     </li>
-    <!-- <li>
-      Watch history:
-      <div><span>[<%= extra.watchHistory.map((x) => {return parseFloat(x).toFixed(2)}).join(', ') %>]</</span>
-    </li> -->
     <li>
       % Watched:
       <div><span><%= extra.watchedPercentage.toFixed(2) %> %</span></div>
