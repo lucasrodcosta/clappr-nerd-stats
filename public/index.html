@@ -3,7 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Clappr Nerd Stats</title>
+    <script src="https://cdn.jsdelivr.net/npm/clappr/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-stats/dist/clappr-stats.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/latest/clappr-nerd-stats.js"></script>
   </head>
+
   <body>
     <div id="player"></div>
     <script type="text/javascript" charset="utf-8">
@@ -18,21 +23,11 @@
           height: 607.5,
           width: 1080,
           clapprNerdStats: {
-            // Optional: provide multiple combination of keyboard shortcuts to show/hide the statistics.
-            // Default: ['command+shift+s', 'ctrl+shift+s']
             shortcut: ['command+shift+s', 'ctrl+shift+s'],
-
-            // Optional: position of the icon to show/hide the statistics.
-            // Values: 'top-right', 'top-left', 'bottom-right', 'bottom-left', 'none'
-            // Default: 'top-right'
-            iconPosition: 'top-right',
+            iconPosition: 'top-right'
           }
         })
       }
     </script>
-    <script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/clappr-stats/dist/clappr-stats.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/latest/clappr-nerd-stats.js"></script>
   </body>
 </html>
