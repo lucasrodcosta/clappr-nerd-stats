@@ -1,4 +1,4 @@
-.clappr-nerd-stats.container {
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box {
   position: absolute;
   display: inline-block;
   top: 2em;
@@ -17,7 +17,7 @@
   max-width: 75%;
 }
 
-.clappr-nerd-stats.container ul {
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box ul {
   display: inline-block;
   float: left;
   padding: 5px 5px 5px 5px;
@@ -25,31 +25,31 @@
   width: 33.3333%;
 }
 
-.clappr-nerd-stats.container ul, li {
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box ul, li {
   list-style-type: none;
 }
 
-.clappr-nerd-stats.container li:nth-child(2n) {
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box li:nth-child(2n) {
   background: hsla(0, 0%, 100%, 0.15);
 }
 
-.clappr-nerd-stats.container li {
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box li {
   padding: 0 5px;
   text-align: left;
 }
 
-.clappr-nerd-stats.container li.title {
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box li.title {
   text-align: center;
   font-weight: bold;
 }
 
-.clappr-nerd-stats.container li div {
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box li div {
   padding-left: 5px;
   margin: 0;
   float: right;
 }
 
-.clappr-nerd-stats.icon-show-stats a {
+.clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats a {
   z-index: 1000;
   position: absolute;
   float: right;
@@ -57,25 +57,25 @@
   display: none;
 }
 
-.clappr-nerd-stats.icon-show-stats.top-right a {
+.clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats.top-right a {
   display: block;
   top: 5px;
   right: 10px;
 }
 
-.clappr-nerd-stats.icon-show-stats.top-left a {
+.clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats.top-left a {
   display: block;
   top: 5px;
   left: 10px;
 }
 
-.clappr-nerd-stats.icon-show-stats.bottom-right a {
+.clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats.bottom-right a {
   display: block;
   right: 10px;
   bottom: 5px;
 }
 
-.clappr-nerd-stats.icon-show-stats.bottom-left a {
+.clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats.bottom-left a {
   display: block;
   bottom: 5px;
   left: 10px;

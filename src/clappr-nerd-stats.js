@@ -11,6 +11,13 @@ export default class ClapprNerdStats extends UIContainerPlugin {
 
   get template() { return template(pluginHtml) }
 
+  get attributes() {
+    return {
+      'data-clappr-nerd-stats': '',
+      'class': 'clappr-nerd-stats'
+    }
+  }
+
   get events() {
     return {
       'click [data-show-stats-button]': 'showOrHide'
@@ -19,6 +26,7 @@ export default class ClapprNerdStats extends UIContainerPlugin {
 
   constructor(container) {
     super(container)
+    this.statsBoxElem = '.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box'
     this._shortcut = get(container, 'options.clapprNerdStats.shortcut', ['command+shift+s', 'ctrl+shift+s'])
     this._iconPosition = get(container, 'options.clapprNerdStats.iconPosition', 'top-right')
   }
@@ -35,8 +43,8 @@ export default class ClapprNerdStats extends UIContainerPlugin {
     } else {
       Mousetrap.bind(this._shortcut, () => this.showOrHide())
       this.listenTo(clapprStats, ClapprStats.REPORT_EVENT, this.onReport)
-      this.style = Styler.getStyleFor(pluginStyle, {baseUrl: this.options.baseUrl})
       this.metrics = clapprStats._metrics
+      this.updateMetrics()
       this.render()
     }
   }
@@ -46,7 +54,6 @@ export default class ClapprNerdStats extends UIContainerPlugin {
       this.hide()
     } else {
       this.show()
-      this.render()
     }
 
     if (event) {
@@ -55,30 +62,36 @@ export default class ClapprNerdStats extends UIContainerPlugin {
   }
 
   show() {
-    this.$el.find('.clappr-nerd-stats.container').show()
+    this.container.$el.find(this.statsBoxElem).show()
     this.showing = true
   }
 
   hide() {
-    this.$el.find('.clappr-nerd-stats.container').hide()
+    this.container.$el.find(this.statsBoxElem).hide()
     this.showing = false
   }
 
   onReport(metrics) {
     this.metrics = metrics
-    this.render()
+    this.updateMetrics()
   }
 
-  render() {
+  updateMetrics() {
     this.$el.html(this.template({
       metrics: this.metrics,
       iconPosition: this._iconPosition
     }))
-    this.$el.append(this.style)
-    this.container.$el.append(this.el)
+
     if (!this.showing) {
       this.hide()
     }
+  }
+
+  render() {
+    const style = Styler.getStyleFor(pluginStyle, {baseUrl: this.options.baseUrl})
+    this.container.$el.append(style)
+    this.container.$el.append(this.$el)
+    this.hide()
     return this
   }
 }
