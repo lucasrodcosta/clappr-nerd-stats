@@ -77,10 +77,12 @@ export default class ClapprNerdStats extends UIContainerPlugin {
   }
 
   updateMetrics() {
+    var scrollTop = this.container.$el.find(this.statsBoxElem).scrollTop()
     this.$el.html(this.template({
       metrics: this.metrics,
       iconPosition: this._iconPosition
     }))
+    this.container.$el.find(this.statsBoxElem).scrollTop(scrollTop)
 
     if (!this.showing) {
       this.hide()
