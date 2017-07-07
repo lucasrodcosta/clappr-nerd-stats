@@ -9,7 +9,6 @@ var Mousetrap = require('mousetrap')
 
 export default class ClapprNerdStats extends UIContainerPlugin {
   get name() { return 'clappr-nerd-stats' }
-
   get template() { return template(pluginHtml) }
 
   get attributes() {
@@ -26,9 +25,11 @@ export default class ClapprNerdStats extends UIContainerPlugin {
     }
   }
 
+  get statsBoxElem() { return '.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box' }
+  get statsBoxWidthThreshold() { return 720 }
+
   constructor(container) {
     super(container)
-    this.statsBoxElem = '.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box'
     this._shortcut = get(container, 'options.clapprNerdStats.shortcut', ['command+shift+s', 'ctrl+shift+s'])
     this._iconPosition = get(container, 'options.clapprNerdStats.iconPosition', 'top-right')
   }
@@ -82,10 +83,18 @@ export default class ClapprNerdStats extends UIContainerPlugin {
 
   updateMetrics() {
     var scrollTop = this.container.$el.find(this.statsBoxElem).scrollTop()
+
     this.$el.html(this.template({
       metrics: this.metrics,
       iconPosition: this._iconPosition
     }))
+
+    if (this.container.options.width >= this.statsBoxWidthThreshold) {
+      this.$el.find(this.statsBoxElem).addClass('wide')
+    } else {
+      this.$el.find(this.statsBoxElem).addClass('narrow')
+    }
+
     this.container.$el.find(this.statsBoxElem).scrollTop(scrollTop)
 
     if (!this.showing) {

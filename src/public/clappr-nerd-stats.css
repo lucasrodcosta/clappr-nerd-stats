@@ -13,16 +13,21 @@
   z-index: 1000;
   overflow: auto;
   max-height: 300px;
-  min-width: 240px;
-  max-width: 75%;
+}
+
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box.narrow {
+  width: 260px;
+}
+
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box.wide {
+  width: 660px;
 }
 
 .clappr-nerd-stats[data-clappr-nerd-stats] .stats-box ul {
   display: inline-block;
   float: left;
   padding: 5px 5px 5px 5px;
-  min-width: 240px;
-  width: 33.3333%;
+  width: 210px;
 }
 
 .clappr-nerd-stats[data-clappr-nerd-stats] .stats-box ul, li {
