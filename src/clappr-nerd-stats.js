@@ -21,7 +21,8 @@ export default class ClapprNerdStats extends UIContainerPlugin {
 
   get events() {
     return {
-      'click [data-show-stats-button]': 'showOrHide'
+      'click [data-show-stats-button]': 'showOrHide',
+      'click [data-close-button]': 'hide'
     }
   }
 
@@ -52,24 +53,26 @@ export default class ClapprNerdStats extends UIContainerPlugin {
 
   showOrHide(event) {
     if (this.showing) {
-      this.hide()
+      this.hide(event)
     } else {
-      this.show()
+      this.show(event)
     }
+  }
 
+  show(event) {
+    this.container.$el.find(this.statsBoxElem).show()
+    this.showing = true
     if (event) {
       event.stopPropagation()
     }
   }
 
-  show() {
-    this.container.$el.find(this.statsBoxElem).show()
-    this.showing = true
-  }
-
-  hide() {
+  hide(event) {
     this.container.$el.find(this.statsBoxElem).hide()
     this.showing = false
+    if (event) {
+      event.stopPropagation()
+    }
   }
 
   onReport(metrics) {

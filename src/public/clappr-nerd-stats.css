@@ -49,6 +49,13 @@
   float: right;
 }
 
+.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box a.close-button {
+  position: absolute;
+  right: 0.3em;
+  top: 0;
+  font-size: 18px;
+}
+
 .clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats a {
   z-index: 1000;
   position: absolute;
