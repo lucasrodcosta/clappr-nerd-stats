@@ -4,6 +4,7 @@ import pluginStyle from './public/clappr-nerd-stats.css'
 import pluginHtml from './public/clappr-nerd-stats.html'
 import get from 'lodash.get'
 
+var Formatter = require('./formatter')
 var Mousetrap = require('mousetrap')
 
 export default class ClapprNerdStats extends UIContainerPlugin {
@@ -72,7 +73,7 @@ export default class ClapprNerdStats extends UIContainerPlugin {
   }
 
   onReport(metrics) {
-    this.metrics = metrics
+    this.metrics = Formatter.format(metrics)
     this.updateMetrics()
   }
 

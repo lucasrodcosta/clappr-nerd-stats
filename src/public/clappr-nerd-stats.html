@@ -59,27 +59,27 @@
     <li class="title"><span>Timers</span></li>
     <li>
       Startup time:
-      <div><span><%= timers.startup.toFixed(2) %> ms</span></div>
+      <div><span><%= timers.startup %></span></div>
     </li>
     <li>
       Watching time:
-      <div><span><%= (timers.watch / 1000).toFixed(2) %> sec</span></div>
+      <div><span><%= timers.watch %></span></div>
     </li>
     <li>
       Pause time:
-      <div><span><%= timers.pause.toFixed(2) %> ms</span></div>
+      <div><span><%= timers.pause %></span></div>
     </li>
     <li>
       Buffering time:
-      <div><span><%= timers.buffering.toFixed(2) %> ms</span></div>
+      <div><span><%= timers.buffering %></span></div>
     </li>
     <li>
       Session time:
-      <div><span><%= (timers.session / 1000).toFixed(2) %> sec</span></div>
+      <div><span><%= timers.session %></span></div>
     </li>
     <li>
       Latency:
-      <div><span><%= timers.latency.toFixed(2) %> ms</span></div>
+      <div><span><%= timers.latency %></span></div>
     </li>
   </ul>
 
@@ -95,35 +95,35 @@
     </li>
     <li>
       Buffer size:
-      <div><span><%= (extra.buffersize / 1000).toFixed(2) %> sec</span></div>
+      <div><span><%= extra.buffersize %></span></div>
     </li>
     <li>
       Video duration:
-      <div><span><%= (extra.duration / 1000).toFixed(2) %> sec</span></div>
+      <div><span><%= extra.duration %></span></div>
     </li>
     <li>
       Current time:
-      <div><span><%= (extra.currentTime / 1000).toFixed(2) %> sec</span></div>
+      <div><span><%= extra.currentTime %></span></div>
     </li>
     <li>
       Bitrate weighted mean:
-      <div><span><%= (extra.bitrateWeightedMean / 1000).toFixed(2) %> kbps</span></div>
+      <div><span><%= extra.bitrateWeightedMean %></span></div>
     </li>
     <li>
       Bitrate most used:
-      <div><span><%= extra.bitrateMostUsed ? (extra.bitrateMostUsed.bitrate / 1000).toFixed(2) : '0' %> kbps</span></div>
+      <div><span><%= extra.bitrateMostUsed ? extra.bitrateMostUsed.bitrate : 0 %></span></div>
     </li>
     <li>
       % Watched:
-      <div><span><%= extra.watchedPercentage.toFixed(2) %> %</span></div>
+      <div><span><%= extra.watchedPercentage %></span></div>
     </li>
     <li>
       % Buffering:
-      <div><span><%= extra.bufferingPercentage.toFixed(2) %> %</span></div>
+      <div><span><%= extra.bufferingPercentage %></span></div>
     </li>
     <li>
       Bandwidth:
-      <div><span><%= extra.bandwidth %> kbps</span></div>
+      <div><span><%= extra.bandwidth %></span></div>
     </li>
   </ul>
 </div>
