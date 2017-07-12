@@ -59,6 +59,7 @@
   right: 0.3em;
   top: 0;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats a {
@@ -67,6 +68,7 @@
   float: right;
   color: white;
   display: none;
+  cursor: pointer;
 }
 
 .clappr-nerd-stats[data-clappr-nerd-stats] .icon-show-stats.top-right a {
