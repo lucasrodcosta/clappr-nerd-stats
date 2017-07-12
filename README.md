@@ -5,6 +5,8 @@
 A [Clappr](https://github.com/clappr/clappr) UI plugin to show statistics provided by
 [clappr-stats](https://github.com/clappr/clappr-stats).
 
+You can see a working demo in [JSFiddle](https://jsfiddle.net/lucasrodcosta/yvgebksv/) or [CodePen](https://codepen.io/lucasrodcosta/pen/eRxOEY).
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lucasrodcosta/clappr-nerd-stats/master/images/clappr-nerd-stats.png" alt="Clappr Nerd Stats"/>
 </p>
