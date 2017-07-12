@@ -1,4 +1,4 @@
-import {UICorePlugin, Events, Styler, template} from 'clappr'
+import {UICorePlugin, Mediator, Events, Styler, template} from 'clappr'
 import ClapprStats from 'clappr-stats'
 import pluginStyle from './public/clappr-nerd-stats.css'
 import pluginHtml from './public/clappr-nerd-stats.html'
@@ -45,7 +45,7 @@ export default class ClapprNerdStats extends UICorePlugin {
                     'For more info, visit: https://github.com/clappr/clappr-stats.')
     } else {
       Mousetrap.bind(this._shortcut, () => this.showOrHide())
-      this.listenTo(this.core, Events.CORE_FULLSCREEN, this.toggleFullscreen)
+      Mediator.on(`${this.core.options.playerId}:${Events.PLAYER_RESIZE}`, this.onPlayerResize, this)
       this.listenTo(clapprStats, ClapprStats.REPORT_EVENT, this.onReport)
       this.metrics = clapprStats._metrics
       this.updateMetrics()
@@ -77,8 +77,7 @@ export default class ClapprNerdStats extends UICorePlugin {
     }
   }
 
-  toggleFullscreen(fullscreen) {
-    this._fullscreen = fullscreen
+  onPlayerResize() {
     this.setStatsBoxSize()
   }
 
@@ -104,7 +103,7 @@ export default class ClapprNerdStats extends UICorePlugin {
   }
 
   setStatsBoxSize() {
-    if (this._fullscreen) {
+    if (this.core.playerInfo.currentSize.width >= this.statsBoxWidthThreshold) {
       this.$el.find(this.statsBoxElem).addClass('wide')
       this.$el.find(this.statsBoxElem).removeClass('narrow')
     } else {
