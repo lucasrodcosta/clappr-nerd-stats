@@ -103,7 +103,7 @@ export default class ClapprNerdStats extends UICorePlugin {
   }
 
   setStatsBoxSize() {
-    if (this.core.playerInfo.currentSize.width >= this.statsBoxWidthThreshold) {
+    if (this.core.playerInfo.computedSize.width >= this.statsBoxWidthThreshold) {
       this.$el.find(this.statsBoxElem).addClass('wide')
       this.$el.find(this.statsBoxElem).removeClass('narrow')
     } else {
