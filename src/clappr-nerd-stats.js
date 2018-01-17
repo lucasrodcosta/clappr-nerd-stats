@@ -3,6 +3,7 @@ import ClapprStats from 'clappr-stats'
 import pluginStyle from './public/clappr-nerd-stats.css'
 import pluginHtml from './public/clappr-nerd-stats.html'
 import get from 'lodash.get'
+import cloneDeep from 'lodash.clonedeep'
 
 var Formatter = require('./formatter')
 var Mousetrap = require('mousetrap')
@@ -28,10 +29,14 @@ export default class ClapprNerdStats extends UICorePlugin {
   get statsBoxElem() { return '.clappr-nerd-stats[data-clappr-nerd-stats] .stats-box' }
   get statsBoxWidthThreshold() { return 720 }
 
+  get playerWidth() { return this.core.playerInfo.computedSize.width }
+  get playerHeight() { return this.core.playerInfo.computedSize.height }
+
   constructor(core) {
     super(core)
     this._shortcut = get(core, 'options.clapprNerdStats.shortcut', ['command+shift+s', 'ctrl+shift+s'])
     this._iconPosition = get(core, 'options.clapprNerdStats.iconPosition', 'top-right')
+    this.metrics = {}
   }
 
   bindEvents() {
@@ -39,16 +44,17 @@ export default class ClapprNerdStats extends UICorePlugin {
   }
 
   init() {
-    const clapprStats = this.core.getCurrentContainer().getPlugin('clappr_stats')
+    this.container = this.core.getCurrentContainer()
+    const clapprStats = this.container.getPlugin('clappr_stats')
     if (typeof clapprStats === 'undefined') {
       console.error('clappr-stats not available. Please, include it as a plugin of your Clappr instance.\n' +
                     'For more info, visit: https://github.com/clappr/clappr-stats.')
+      this.disable()
     } else {
       Mousetrap.bind(this._shortcut, () => this.showOrHide())
       Mediator.on(`${this.core.options.playerId}:${Events.PLAYER_RESIZE}`, this.onPlayerResize, this)
-      this.listenTo(clapprStats, ClapprStats.REPORT_EVENT, this.onReport)
-      this.metrics = clapprStats._metrics
-      this.updateMetrics()
+      this.listenTo(clapprStats, ClapprStats.REPORT_EVENT, this.updateMetrics)
+      this.updateMetrics(clapprStats._metrics)
       this.render()
     }
   }
@@ -81,16 +87,21 @@ export default class ClapprNerdStats extends UICorePlugin {
     this.setStatsBoxSize()
   }
 
-  onReport(metrics) {
-    this.metrics = Formatter.format(metrics)
-    this.updateMetrics()
+  addGeneralMetrics() {
+    this.metrics.general = {
+      displayResolution: (this.playerWidth + 'x' + this.playerHeight),
+      volume: this.container.volume
+    }
   }
 
-  updateMetrics() {
+  updateMetrics(metrics) {
+    this.metrics = cloneDeep(metrics)
+    this.addGeneralMetrics()
+
     var scrollTop = this.core.$el.find(this.statsBoxElem).scrollTop()
 
     this.$el.html(this.template({
-      metrics: this.metrics,
+      metrics: Formatter.format(this.metrics),
       iconPosition: this._iconPosition
     }))
     this.setStatsBoxSize()
@@ -103,7 +114,7 @@ export default class ClapprNerdStats extends UICorePlugin {
   }
 
   setStatsBoxSize() {
-    if (this.core.playerInfo.computedSize.width >= this.statsBoxWidthThreshold) {
+    if (this.playerWidth >= this.statsBoxWidthThreshold) {
       this.$el.find(this.statsBoxElem).addClass('wide')
       this.$el.find(this.statsBoxElem).removeClass('narrow')
     } else {

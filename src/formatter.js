@@ -12,6 +12,11 @@ const percentScale = new humanFormat.Scale({
 })
 
 const formattingTemplate = {
+  general: {
+    volume: {
+      scale: percentScale
+    }
+  },
   timers: {
     startup: {
       scale: timeScale
@@ -69,7 +74,7 @@ export default class Formatter {
       var typeTemplate = formattingTemplate[type]
       Object.keys(metrics[type]).forEach((name) => {
         var value = metrics[type][name]
-        if (typeTemplate && typeTemplate[name] && (typeof value === 'number')) {
+        if (typeTemplate && typeTemplate[name] && (typeof value === 'number') && !isNaN(value)) {
           var templateScale = typeTemplate[name].scale || 'SI'
           var templateUnit = typeTemplate[name].unit || ''
           formattedMetrics[type][name] = humanFormat(value, {

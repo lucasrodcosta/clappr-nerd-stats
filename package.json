@@ -19,6 +19,7 @@
     "clappr": "^0.2.66",
     "human-format": "^0.8.0",
     "lodash.get": "^4.3.0",
+    "lodash.clonedeep": "^4.3.0",
     "mousetrap": "^1.6.1"
   },
   "devDependencies": {

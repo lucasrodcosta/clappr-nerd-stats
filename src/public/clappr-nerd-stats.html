@@ -1,3 +1,4 @@
+<% general = metrics.general %>
 <% counters = metrics.counters %>
 <% timers = metrics.timers %>
 <% extra = metrics.extra %>
@@ -8,6 +9,18 @@
 
 <div class="stats-box">
   <a class="close-button" data-close-button>&times;</a>
+
+  <ul>
+    <li class="title"><span>General</span></li>
+    <li>
+      Display resolution:
+      <div><span><%= general.displayResolution %></span></div>
+    </li>
+    <li>
+      Volume:
+      <div><span><%= general.volume %></span></div>
+    </li>
+  </ul>
 
   <ul>
     <li class="title"><span>Counters</span></li>
