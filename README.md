@@ -29,8 +29,7 @@ a NPM package.
     window.player = new Clappr.Player({
       parentId: '#player',
       plugins: [ClapprNerdStats, ClapprStats],
-      // source: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-      source: 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8',
+      source: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
       height: 607.5,
       width: 1080,
       clapprNerdStats: {
