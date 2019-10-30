@@ -1,25 +1,17 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/clappr-nerd-stats.js'),
+  mode: 'production',
   externals: {
     'clappr': 'Clappr',
     'clappr-stats': 'ClapprStats'
   },
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'css-loader'
-      },
-      {
-        test: /\.html/,
-        loader: 'html-loader'
-      }
+    rules: [
+      { test: /\.js$/, use: 'babel-loader' },
+      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.html/, use: 'html-loader' }
     ]
   },
   resolve: {
@@ -30,5 +22,5 @@ module.exports = {
     filename: 'clappr-nerd-stats.js',
     library: 'ClapprNerdStats',
     libraryTarget: 'umd'
-  },
+  }
 };
