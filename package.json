@@ -1,6 +1,6 @@
 {
   "name": "clappr-nerd-stats",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Clappr UI plugin to show clappr-stats info",
   "main": "./dist/clappr-nerd-stats.js",
   "repository": {
