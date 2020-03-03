@@ -16,13 +16,16 @@
   "author": "lucasrodcosta@gmail.com",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "clappr": "^0.2.66",
     "human-format": "^0.8.0",
     "lodash.get": "^4.3.0",
     "lodash.clonedeep": "^4.3.0",
     "mousetrap": "^1.6.1"
   },
+  "peerDependencies": {
+    "@clappr/core": "^0.4.2"
+  },
   "devDependencies": {
+    "@clappr/core": "^0.4.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-add-module-exports": "^0.2.1",
